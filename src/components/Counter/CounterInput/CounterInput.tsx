@@ -1,15 +1,15 @@
-import React from "react"
-import classes from "./CounterInput.module.scss"
+import React from 'react'
+import classes from './CounterInput.module.scss'
 
 export type CounterInputPropsType = {
-
+    count: number
 }
 
 
-const CounterInput:React.FC<CounterInputPropsType> = () => {
+const CounterInput: React.FC<CounterInputPropsType> = ({count}) => {
     return (
         <div className={classes.input}>
-            0
+            {count}
         </div>
     )
 }
