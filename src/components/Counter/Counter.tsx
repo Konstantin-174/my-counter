@@ -13,8 +13,8 @@ const Counter:React.FC<CounterPropsType> = () => {
     <div className={classes.counter}>
         <CounterInput/>
         <div className={classes.buttons}>
-            <CounterButton/>
-            <CounterButton/>
+            <CounterButton>INC</CounterButton>
+            <CounterButton>RESET</CounterButton>
         </div>
     </div>
     )

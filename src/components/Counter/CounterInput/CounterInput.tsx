@@ -1,4 +1,5 @@
 import React from "react"
+import classes from "./CounterInput.module.scss"
 
 export type CounterInputPropsType = {
 
@@ -6,7 +7,11 @@ export type CounterInputPropsType = {
 
 
 const CounterInput:React.FC<CounterInputPropsType> = () => {
-    return <div>asd</div>
+    return (
+        <div className={classes.input}>
+            0
+        </div>
+    )
 }
 
 export default CounterInput
