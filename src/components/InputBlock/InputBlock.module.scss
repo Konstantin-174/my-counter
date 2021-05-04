@@ -29,13 +29,40 @@
       }
 
       .input {
+        display: flex;
         flex-basis: 40%;
+
+        .dec,
+        .inc  {
+          padding-top: 3px;
+          justify-content: center;
+          text-align: center;
+          width: 25px;
+          height: 30px;
+          cursor: pointer;
+          background-color: lighten(#666666, 10%);
+          color: #33CCCC;
+          transition: .3s;
+
+          &:hover {
+            background-color: lighten(#666666, 5%);
+          }
+        }
+
+        :first-child {
+          border-top-left-radius: 5px;
+          border-bottom-left-radius: 5px;
+        }
+
+        :last-child {
+          border-top-right-radius: 5px;
+          border-bottom-right-radius: 5px;
+        }
 
         input {
           text-align: center;
           height: 30px;
-          width: 150px;
-          border-radius: 5px;
+          width: 90px;
           border: none;
           outline: none;
           cursor: pointer;
@@ -48,6 +75,7 @@
 
           &::placeholder {
             color: #666666;
+            font-size: 11px;
           }
         }
       }

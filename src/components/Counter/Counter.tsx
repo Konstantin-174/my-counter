@@ -19,11 +19,11 @@ const Counter: React.FC<CounterPropsType> = ({
         <section className={local.counter}>
             <CounterInput count={count}/>
             <div className={local.btns}>
-                <CounterButton title="INC"
+                <CounterButton title="inc"
                                change={incrementCounter}
                                disabled={count >= 5}
                 />
-                <CounterButton title="RESET"
+                <CounterButton title="reset"
                                change={resetCounter}
                                disabled={count === 0}
                 />

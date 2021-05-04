@@ -10,23 +10,31 @@ export const InputBlock = () => {
                     <div className={local.inputTitle}>
                         max value
                     </div>
-                    <div className={local.input}>
-                        <input type="text" placeholder="Enter your value"/>
-                    </div>
+                    <Input/>
                 </div>
                 <div className={local.inputItem}>
                     <div className={local.inputTitle}>
                         start value
                     </div>
-                    <div className={local.input}>
-                        <input type="text" placeholder="Enter your value"/>
-                    </div>
+                    <Input />
                 </div>
             </div>
             <div className={local.btn}>
                 <CounterButton title="set"/>
             </div>
         </section>
+    )
+}
+
+const Input = () => {
+    return (
+        <div className={local.input}>
+            <div className={local.dec}>-</div>
+            <input type="text"
+                   placeholder="Enter your value"
+            />
+            <div className={local.inc}>+</div>
+        </div>
     )
 }
 
