@@ -14,7 +14,8 @@ function App(props: AppPropsType) {
 
     return (
         <div className="App">
-            <InputBlock //count={state.count}
+            <InputBlock maxValue={state.maxValue}
+                        startValue={state.startValue}
                         dispatch={props.store.dispatch.bind(props.store)}
             />
             <Counter count={state.count}

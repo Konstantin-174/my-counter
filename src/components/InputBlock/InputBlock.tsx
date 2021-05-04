@@ -1,18 +1,44 @@
 import local from './InputBlock.module.scss';
 import React from 'react';
 import CounterButton from '../Counter/CounterButton/CounterButton';
-import {ChangeCountActionType, ResetCountActionType} from '../../store/store';
+import {
+    ChangeCountActionType,
+    IncSetMaxValueAC,
+    IncSetMaxValueActionType,
+    ResetCountActionType,
+    DecSetMaxValueActionType,
+    DecSetMaxValueAC
+} from '../../store/store';
 
 type InputBlockPropsType = {
     disabled?: boolean
-    dispatch: (action: ChangeCountActionType | ResetCountActionType) => void
+    dispatch: (action: ChangeCountActionType |
+        ResetCountActionType |
+        IncSetMaxValueActionType |
+        DecSetMaxValueActionType) => void
+    maxValue: number
+    startValue: number
     // count: number
+}
+
+type InputType = {
+    newValue: number
+    incHandler: () => void
+    decHandler: () => void
 }
 
 export const InputBlock = (props: InputBlockPropsType) => {
 
     const alertMessage = () => {
-        alert ("hello!")
+        alert('Hello!')
+    }
+
+    const incMaxValue = () => {
+        props.dispatch(IncSetMaxValueAC(props.maxValue))
+    }
+
+    const decMaxValue = () => {
+        props.dispatch(DecSetMaxValueAC(props.maxValue))
     }
 
     return (
@@ -22,13 +48,17 @@ export const InputBlock = (props: InputBlockPropsType) => {
                     <div className={local.inputTitle}>
                         max value
                     </div>
-                    <Input/>
+                    <Input decHandler={decMaxValue}
+                           incHandler={incMaxValue}
+                           newValue={props.maxValue}/>
                 </div>
                 <div className={local.inputItem}>
                     <div className={local.inputTitle}>
                         start value
                     </div>
-                    <Input />
+                    <Input decHandler={() => {}}
+                           incHandler={() => {}}
+                           newValue={props.startValue}/>
                 </div>
             </div>
             <div className={local.btn}>
@@ -39,14 +69,19 @@ export const InputBlock = (props: InputBlockPropsType) => {
     )
 }
 
-const Input = () => {
+const Input = (props: InputType) => {
+
     return (
         <div className={local.input}>
-            <div className={local.dec}>-</div>
-            <input type="text"
+            <div className={local.dec}
+                 onClick={props.decHandler}>-</div>
+            <input value={props.newValue}
+                   type="text"
                    placeholder="Enter your value"
             />
-            <div className={local.inc}>+</div>
+            <div className={local.inc}
+                 onClick={props.incHandler}>+
+            </div>
         </div>
     )
 }

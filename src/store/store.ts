@@ -12,7 +12,10 @@ export type StoreType = {
     _render: () => void
     getState: () => StateType
     subscribe: ( callback: () => void) => void
-    dispatch: (action: ChangeCountActionType | ResetCountActionType) => void
+    dispatch: (action: ChangeCountActionType |
+        ResetCountActionType |
+        IncSetMaxValueActionType |
+        DecSetMaxValueActionType) => void
 }
 
 // === / STATE TYPES ===
@@ -26,6 +29,16 @@ export type ChangeCountActionType = {
 export type ResetCountActionType = {
     type: "RESET-COUNT",
     count: number
+}
+
+export type IncSetMaxValueActionType = {
+    type: "INC-SET-MAX-VALUE"
+    newValue: number
+}
+
+export type DecSetMaxValueActionType = {
+    type: "DEC-SET-MAX-VALUE",
+    newValue: number
 }
 // === / ACTION TYPES ===
 
@@ -53,6 +66,14 @@ export const store: StoreType = {
                 this._state.count = 0
             }
             this._render()
+        } else if (action.type === "INC-SET-MAX-VALUE") {
+            this._state.maxValue = action.newValue + 1
+            this._render()
+        } else if (action.type === "DEC-SET-MAX-VALUE") {
+            if (this._state.maxValue > 0) {
+                this._state.maxValue = action.newValue - 1
+            }
+            this._render()
         }
     }
 }
@@ -72,4 +93,17 @@ export const resetCountAC = (count: number): ResetCountActionType => {
     }
 }
 
+export const IncSetMaxValueAC = (value: number): IncSetMaxValueActionType => {
+    return {
+        type: "INC-SET-MAX-VALUE",
+        newValue: value
+    }
+}
+
+export const DecSetMaxValueAC = (value: number): DecSetMaxValueActionType => {
+    return {
+        type: "DEC-SET-MAX-VALUE",
+        newValue: value
+    }
+}
 // === / ACTION CREATORS ===
