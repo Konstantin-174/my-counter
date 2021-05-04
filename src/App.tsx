@@ -1,33 +1,24 @@
-import React, {useState} from 'react';
+import React from 'react';
 import './App.css';
 import Counter from './components/Counter/Counter';
 import {InputBlock} from './components/InputBlock/InputBlock';
+import {StoreType} from './store/store';
 
+type AppPropsType = {
+    store: StoreType
+}
 
-function App() {
+function App(props: AppPropsType) {
 
-    const [count, setCount] = useState<number>(0)
-
-    const incrementCounter = () => {
-        if(count >= 0 && count < 5) {
-            setCount(count + 1)
-        } else if(count >= 5) {
-            return
-        }
-    }
-
-    const resetCounter = () => {
-        if (count > 0) {
-            setCount(0)
-        } else return
-    }
+    const state = props.store.getState();
 
     return (
         <div className="App">
-            <InputBlock />
-            <Counter count={count}
-                     incrementCounter={incrementCounter}
-                     resetCounter={resetCounter}
+            <InputBlock //count={state.count}
+                        dispatch={props.store.dispatch.bind(props.store)}
+            />
+            <Counter count={state.count}
+                     dispatch={props.store.dispatch.bind(props.store)}
             />
         </div>
     );

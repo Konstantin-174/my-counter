@@ -7,6 +7,7 @@ export type CounterInputPropsType = {
 
 
 const CounterInput: React.FC<CounterInputPropsType> = ({count}) => {
+
     return (
         <div className={`${classes.input} ${count === 5 ? classes.error : ""}`}>
             {count}

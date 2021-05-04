@@ -1,8 +1,20 @@
 import local from './InputBlock.module.scss';
 import React from 'react';
 import CounterButton from '../Counter/CounterButton/CounterButton';
+import {ChangeCountActionType, ResetCountActionType} from '../../store/store';
 
-export const InputBlock = () => {
+type InputBlockPropsType = {
+    disabled?: boolean
+    dispatch: (action: ChangeCountActionType | ResetCountActionType) => void
+    // count: number
+}
+
+export const InputBlock = (props: InputBlockPropsType) => {
+
+    const alertMessage = () => {
+        alert ("hello!")
+    }
+
     return (
         <section className={local.inputBlockWrap}>
             <div className={local.inputArea}>
@@ -20,7 +32,8 @@ export const InputBlock = () => {
                 </div>
             </div>
             <div className={local.btn}>
-                <CounterButton title="set"/>
+                <CounterButton changes={alertMessage}
+                               title="set"/>
             </div>
         </section>
     )

@@ -3,16 +3,15 @@ import classes from './CounterButton.module.scss'
 
 export type CounterButtonPropsType = {
     disabled?: boolean
-    change?: () => void
+    changes: () => void
     title: string
 }
 
 
-const CounterButton: React.FC<CounterButtonPropsType> = ({change,
-                                                             disabled,
-                                                            title}) => {
+const CounterButton: React.FC<CounterButtonPropsType> = ({changes, disabled, title}) => {
+
     return (
-        <button onClick={change}
+        <button onClick={changes}
                 className={classes.btn}
                 disabled={disabled}>
             {title}
