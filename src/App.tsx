@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import './App.css';
 import Counter from './components/Counter/Counter';
+import {InputBlock} from './components/InputBlock/InputBlock';
 
 
 function App() {
@@ -23,6 +24,7 @@ function App() {
 
     return (
         <div className="App">
+            <InputBlock />
             <Counter count={count}
                      incrementCounter={incrementCounter}
                      resetCounter={resetCounter}

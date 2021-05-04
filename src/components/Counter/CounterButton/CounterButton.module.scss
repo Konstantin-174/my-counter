@@ -1,8 +1,14 @@
 @import "src/variables/variables";
 
 .btn {
-  padding: 8px 20px;
-  margin: 0 4px;
-  border-radius: 4px;
-  cursor: pointer;
+  @include Text_Decoration;
+  transition: .3s;
+  background-color: transparent;
+  border: none;
+  width: 100%;
+  flex-basis: 50%;
+
+  &:disabled {
+    @include Hover;
+  }
 }

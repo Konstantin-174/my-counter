@@ -1,7 +1,7 @@
 import React from 'react'
 import CounterInput from './CounterInput/CounterInput';
 import CounterButton from './CounterButton/CounterButton';
-import classes from './Counter.module.scss'
+import local from './Counter.module.scss'
 
 export type CounterPropsType = {
     count: number
@@ -10,21 +10,25 @@ export type CounterPropsType = {
 }
 
 
-const Counter: React.FC<CounterPropsType> = ({resetCounter,
+const Counter: React.FC<CounterPropsType> = ({
+                                                 resetCounter,
                                                  incrementCounter,
-                                                 count}) => {
+                                                 count
+                                             }) => {
     return (
-        <div className={classes.counter}>
+        <section className={local.counter}>
             <CounterInput count={count}/>
-            <div className={classes.buttons}>
-                <CounterButton change={incrementCounter}
+            <div className={local.btns}>
+                <CounterButton title="INC"
+                               change={incrementCounter}
                                disabled={count >= 5}
-                >INC</CounterButton>
-                <CounterButton change={resetCounter}
+                />
+                <CounterButton title="RESET"
+                               change={resetCounter}
                                disabled={count === 0}
-                >RESET</CounterButton>
+                />
             </div>
-        </div>
+        </section>
     )
 }
 
