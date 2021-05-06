@@ -18,7 +18,8 @@ function App(props: AppPropsType) {
                         startValue={state.startValue}
                         dispatch={props.store.dispatch.bind(props.store)}
             />
-            <Counter count={state.count}
+            <Counter maxValue={state.maxValue}
+                     count={state.count}
                      dispatch={props.store.dispatch.bind(props.store)}
             />
         </div>

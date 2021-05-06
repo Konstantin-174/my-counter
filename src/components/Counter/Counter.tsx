@@ -7,10 +7,11 @@ import {changeCountAC, ChangeCountActionType, resetCountAC, ResetCountActionType
 export type CounterPropsType = {
     count: number
     dispatch: (action: ChangeCountActionType | ResetCountActionType) => void
+    maxValue: number
 }
 
 
-const Counter: React.FC<CounterPropsType> = ({dispatch, count}) => {
+const Counter: React.FC<CounterPropsType> = ({dispatch, count, maxValue}) => {
 
     const addNewCount = () => {
         dispatch(changeCountAC(count))
@@ -22,11 +23,13 @@ const Counter: React.FC<CounterPropsType> = ({dispatch, count}) => {
 
     return (
         <section className={local.counter}>
-            <CounterInput count={count}/>
+            <CounterInput count={count}
+                          maxValue={maxValue}
+            />
             <div className={local.btns}>
                 <CounterButton changes={addNewCount}
                                title="inc"
-                               disabled={count >= 5}
+                               disabled={count >= maxValue}
                 />
                 <CounterButton title="reset"
                                changes={resetCount}

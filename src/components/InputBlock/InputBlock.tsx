@@ -55,8 +55,6 @@ export const InputBlock = (props: InputBlockPropsType) => {
         props.dispatch(DecSetStartValueAC(props.startValue))
     }
 
-
-
     return (
         <section className={local.inputBlockWrap}>
             <div className={local.inputArea}>

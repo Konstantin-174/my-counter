@@ -3,13 +3,14 @@ import classes from './CounterInput.module.scss'
 
 export type CounterInputPropsType = {
     count: number
+    maxValue: number
 }
 
 
-const CounterInput: React.FC<CounterInputPropsType> = ({count}) => {
+const CounterInput: React.FC<CounterInputPropsType> = ({count, maxValue}) => {
 
     return (
-        <div className={`${classes.input} ${count === 5 ? classes.error : ""}`}>
+        <div className={`${classes.input} ${count === maxValue ? classes.error : ""}`}>
             {count}
         </div>
     )
