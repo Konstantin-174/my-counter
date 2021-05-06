@@ -7,7 +7,11 @@ import {
     IncSetMaxValueActionType,
     ResetCountActionType,
     DecSetMaxValueActionType,
-    DecSetMaxValueAC
+    DecSetMaxValueAC,
+    IncSetStartValueActionType,
+    DecSetStartValueActionType,
+    IncSetStartValueAC,
+    DecSetStartValueAC
 } from '../../store/store';
 
 type InputBlockPropsType = {
@@ -15,7 +19,9 @@ type InputBlockPropsType = {
     dispatch: (action: ChangeCountActionType |
         ResetCountActionType |
         IncSetMaxValueActionType |
-        DecSetMaxValueActionType) => void
+        DecSetMaxValueActionType |
+        IncSetStartValueActionType |
+        DecSetStartValueActionType) => void
     maxValue: number
     startValue: number
     // count: number
@@ -41,6 +47,16 @@ export const InputBlock = (props: InputBlockPropsType) => {
         props.dispatch(DecSetMaxValueAC(props.maxValue))
     }
 
+    const incStartValue = () => {
+        props.dispatch(IncSetStartValueAC(props.startValue))
+    }
+
+    const decStartValue = () => {
+        props.dispatch(DecSetStartValueAC(props.startValue))
+    }
+
+
+
     return (
         <section className={local.inputBlockWrap}>
             <div className={local.inputArea}>
@@ -56,8 +72,8 @@ export const InputBlock = (props: InputBlockPropsType) => {
                     <div className={local.inputTitle}>
                         start value
                     </div>
-                    <Input decHandler={() => {}}
-                           incHandler={() => {}}
+                    <Input decHandler={decStartValue}
+                           incHandler={incStartValue}
                            newValue={props.startValue}/>
                 </div>
             </div>
