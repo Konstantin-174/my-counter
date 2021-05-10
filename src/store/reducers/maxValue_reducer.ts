@@ -7,11 +7,11 @@ const initialState = {
 export const maxValueReducer = (state = initialState, action: AllActionTypes) => {
     switch (action.type) {
         case 'INC-SET-MAX-VALUE':
-            state.maxValue = action.newValue + 1
+            state.maxValue = action.newMaxValue + 1
             return state
         case 'DEC-SET-MAX-VALUE':
             if (state.maxValue > 0) {
-                state.maxValue = action.newValue - 1
+                state.maxValue = action.newMaxValue - 1
             }
             return state
         default:
@@ -23,14 +23,14 @@ export const maxValueReducer = (state = initialState, action: AllActionTypes) =>
 export const IncSetMaxValueAC = (value: number): IncSetMaxValueActionType => {
     return {
         type: 'INC-SET-MAX-VALUE',
-        newValue: value
+        newMaxValue: value
     }
 }
 
 export const DecSetMaxValueAC = (value: number): DecSetMaxValueActionType => {
     return {
         type: 'DEC-SET-MAX-VALUE',
-        newValue: value
+        newMaxValue: value
     }
 }
 // === / ACTION CREATORS ===

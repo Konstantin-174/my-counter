@@ -27,22 +27,22 @@ export type ResetCountActionType = {
 
 export type IncSetMaxValueActionType = {
     type: "INC-SET-MAX-VALUE"
-    newValue: number
+    newMaxValue: number
 }
 
 export type DecSetMaxValueActionType = {
     type: "DEC-SET-MAX-VALUE",
-    newValue: number
+    newMaxValue: number
 }
 
 export type IncSetStartValueActionType = {
     type: "INC-SET-START-VALUE"
-    newValue: number
+    newStartValue: number
 }
 
 export type DecSetStartValueActionType = {
     type: "DEC-SET-START-VALUE",
-    newValue: number
+    newStartValue: number
 }
 // === / ACTION TYPES ===
 

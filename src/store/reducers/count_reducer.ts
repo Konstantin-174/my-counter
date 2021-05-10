@@ -1,7 +1,7 @@
 import {AllActionTypes, ChangeCountActionType, ResetCountActionType} from '../store';
 
 const initialState = {
-    count: 0
+    count: 0,
 }
 
 export const countReducer = (state = initialState, action: AllActionTypes) => {

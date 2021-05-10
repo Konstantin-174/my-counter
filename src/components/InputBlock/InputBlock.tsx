@@ -6,7 +6,6 @@ import {DecSetMaxValueAC, IncSetMaxValueAC} from '../../store/reducers/maxValue_
 import {DecSetStartValueAC, IncSetStartValueAC} from '../../store/reducers/startValue_reducer';
 
 type InputBlockPropsType = {
-    disabled?: boolean
     dispatch: (action: AllActionTypes) => void
     maxValue: number
     startValue: number
@@ -18,7 +17,7 @@ type InputType = {
     decHandler: () => void
 }
 
-export const InputBlock: React.FC<InputBlockPropsType> = ({maxValue, startValue, dispatch, disabled}) => {
+export const InputBlock: React.FC<InputBlockPropsType> = ({maxValue, startValue, dispatch}) => {
 
     const alertMessage = () => {
         alert('Hello!')
@@ -73,14 +72,14 @@ const Input: React.FC<InputType> = ({decHandler, incHandler, newValue}) => {
     return (
         <div className={local.input}>
             <div className={local.dec}
+                 tabIndex={0}
                  onClick={decHandler}>-</div>
             <input value={newValue}
                    type="text"
-                   placeholder="Enter your value"
             />
             <div className={local.inc}
-                 onClick={incHandler}>+
-            </div>
+                 tabIndex={0}
+                 onClick={incHandler}>+</div>
         </div>
     )
 }
