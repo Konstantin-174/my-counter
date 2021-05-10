@@ -1,4 +1,7 @@
-import {rerender} from '../index';
+import {combineReducers, createStore } from 'redux';
+import {countReducer} from './reducers/count_reducer';
+import {maxValueReducer} from './reducers/maxValue_reducer';
+import {startValueReducer} from './reducers/startValue_reducer';
 
 // === STATE TYPES ===
 export type StateType = {
@@ -7,22 +10,17 @@ export type StateType = {
     count: number
 }
 
-export type StoreType = {
-    _state: StateType
-    _render: () => void
-    getState: () => StateType
-    subscribe: ( callback: () => void) => void
-    dispatch: (action: ChangeCountActionType |
-        ResetCountActionType |
-        IncSetMaxValueActionType |
-        DecSetMaxValueActionType |
-        IncSetStartValueActionType |
-        DecSetStartValueActionType) => void
-}
-
+export type StoreType = typeof store
 // === / STATE TYPES ===
 
 // === ACTION TYPES ===
+export type AllActionTypes = ChangeCountActionType
+    | ResetCountActionType
+    | IncSetMaxValueActionType
+    | DecSetMaxValueActionType
+    | IncSetStartValueActionType
+    | DecSetStartValueActionType
+
 export type ChangeCountActionType = {
     type: "CHANGE-COUNT"
     newCount: number
@@ -52,94 +50,14 @@ export type DecSetStartValueActionType = {
     type: "DEC-SET-START-VALUE",
     newValue: number
 }
-
-
 // === / ACTION TYPES ===
 
-export const store: StoreType = {
-    _state: {
-        maxValue: 0,
-        startValue: 0,
-        count: 0
-    },
-    _render() {
-        rerender();
-    },
-    getState() {
-        return this._state
-    },
-    subscribe(callback) {
-        this._render = callback
-    },
-    dispatch(action) {
-        if (action.type === "CHANGE-COUNT") {
-            this._state.count = action.newCount + 1
-            this._render()
-        } else if (action.type === "RESET-COUNT") {
-            if (this._state.count > 0) {
-                this._state.count = 0
-            }
-            this._render()
-        } else if (action.type === "INC-SET-MAX-VALUE") {
-            this._state.maxValue = action.newValue + 1
-            this._render()
-        } else if (action.type === "DEC-SET-MAX-VALUE") {
-            if (this._state.maxValue > 0) {
-                this._state.maxValue = action.newValue - 1
-            }
-            this._render()
-        } else if (action.type === "INC-SET-START-VALUE") {
-            this._state.startValue = action.newValue + 1
-            this._render()
-        } else if (action.type === "DEC-SET-START-VALUE") {
-            if (this._state.startValue > 0) {
-                this._state.startValue = action.newValue - 1
-            }
-            this._render()
-        }
-    }
-}
+// === CREATE STORE ===
+const reducers = combineReducers({
+    countReducer,
+    maxValueReducer,
+    startValueReducer
+})
 
-// === ACTION CREATORS ===
-export const changeCountAC = (newCount: number): ChangeCountActionType => {
-    return {
-        type: "CHANGE-COUNT",
-        newCount: newCount
-    }
-}
-
-export const resetCountAC = (count: number): ResetCountActionType => {
-    return {
-        type: "RESET-COUNT",
-        count: count
-    }
-}
-
-export const IncSetMaxValueAC = (value: number): IncSetMaxValueActionType => {
-    return {
-        type: "INC-SET-MAX-VALUE",
-        newValue: value
-    }
-}
-
-export const DecSetMaxValueAC = (value: number): DecSetMaxValueActionType => {
-    return {
-        type: "DEC-SET-MAX-VALUE",
-        newValue: value
-    }
-}
-
-export const IncSetStartValueAC = (value: number): IncSetStartValueActionType => {
-    return {
-        type: "INC-SET-START-VALUE",
-        newValue: value
-    }
-}
-
-export const DecSetStartValueAC = (value: number): DecSetStartValueActionType => {
-    return {
-        type: "DEC-SET-START-VALUE",
-        newValue: value
-    }
-}
-// === / ACTION CREATORS ===
+export const store = createStore(reducers);
+// === / CREATE STORE ===

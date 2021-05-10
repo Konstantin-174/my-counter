@@ -2,7 +2,8 @@ import React from 'react'
 import CounterInput from './CounterInput/CounterInput';
 import CounterButton from './CounterButton/CounterButton';
 import local from './Counter.module.scss'
-import {changeCountAC, ChangeCountActionType, resetCountAC, ResetCountActionType} from '../../store/store';
+import {ChangeCountActionType, ResetCountActionType} from '../../store/store';
+import {changeCountAC, resetCountAC} from '../../store/reducers/count_reducer';
 
 export type CounterPropsType = {
     count: number

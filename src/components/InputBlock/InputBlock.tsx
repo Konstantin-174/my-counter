@@ -1,30 +1,15 @@
 import local from './InputBlock.module.scss';
 import React from 'react';
 import CounterButton from '../Counter/CounterButton/CounterButton';
-import {
-    ChangeCountActionType,
-    IncSetMaxValueAC,
-    IncSetMaxValueActionType,
-    ResetCountActionType,
-    DecSetMaxValueActionType,
-    DecSetMaxValueAC,
-    IncSetStartValueActionType,
-    DecSetStartValueActionType,
-    IncSetStartValueAC,
-    DecSetStartValueAC
-} from '../../store/store';
+import {AllActionTypes} from '../../store/store';
+import {DecSetMaxValueAC, IncSetMaxValueAC} from '../../store/reducers/maxValue_reducer';
+import {DecSetStartValueAC, IncSetStartValueAC} from '../../store/reducers/startValue_reducer';
 
 type InputBlockPropsType = {
     disabled?: boolean
-    dispatch: (action: ChangeCountActionType |
-        ResetCountActionType |
-        IncSetMaxValueActionType |
-        DecSetMaxValueActionType |
-        IncSetStartValueActionType |
-        DecSetStartValueActionType) => void
+    dispatch: (action: AllActionTypes) => void
     maxValue: number
     startValue: number
-    // count: number
 }
 
 type InputType = {

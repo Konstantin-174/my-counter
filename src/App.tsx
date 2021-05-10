@@ -15,15 +15,14 @@ function App(props: AppPropsType) {
 
     return (
         <div className="App">
-            <InputBlock maxValue={state.maxValue}
-                        startValue={state.startValue}
+            <InputBlock maxValue={state.maxValueReducer.maxValue}
+                        startValue={state.startValueReducer.startValue}
                         dispatch={props.store.dispatch.bind(props.store)}
             />
-            <Counter maxValue={state.maxValue}
-                     count={state.count}
+            <Counter maxValue={state.maxValueReducer.maxValue}
+                     count={state.countReducer.count}
                      dispatch={props.store.dispatch.bind(props.store)}
             />
-            <div> hello</div>
         </div>
     );
 }
