@@ -3,15 +3,9 @@ import {countReducer} from './reducers/count_reducer';
 import {maxValueReducer} from './reducers/maxValue_reducer';
 import {startValueReducer} from './reducers/startValue_reducer';
 
-// === STATE TYPES ===
-export type StateType = {
-    maxValue: number
-    startValue: number
-    count: number
-}
-
+// === STORE TYPES ===
 export type StoreType = typeof store
-// === / STATE TYPES ===
+// === / STORE TYPES ===
 
 // === ACTION TYPES ===
 export type AllActionTypes = ChangeCountActionType

@@ -9,19 +9,19 @@ type AppPropsType = {
     store: StoreType
 }
 
-function App(props: AppPropsType) {
+const App: React.FC<AppPropsType> = ({store}) => {
 
-    const state = props.store.getState();
+    const state = store.getState();
 
     return (
         <div className="App">
             <InputBlock maxValue={state.maxValueReducer.maxValue}
                         startValue={state.startValueReducer.startValue}
-                        dispatch={props.store.dispatch.bind(props.store)}
+                        dispatch={store.dispatch}
             />
             <Counter maxValue={state.maxValueReducer.maxValue}
                      count={state.countReducer.count}
-                     dispatch={props.store.dispatch.bind(props.store)}
+                     dispatch={store.dispatch}
             />
         </div>
     );

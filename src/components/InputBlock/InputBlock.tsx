@@ -18,26 +18,26 @@ type InputType = {
     decHandler: () => void
 }
 
-export const InputBlock = (props: InputBlockPropsType) => {
+export const InputBlock: React.FC<InputBlockPropsType> = ({maxValue, startValue, dispatch, disabled}) => {
 
     const alertMessage = () => {
         alert('Hello!')
     }
 
     const incMaxValue = () => {
-        props.dispatch(IncSetMaxValueAC(props.maxValue))
+        dispatch(IncSetMaxValueAC(maxValue))
     }
 
     const decMaxValue = () => {
-        props.dispatch(DecSetMaxValueAC(props.maxValue))
+        dispatch(DecSetMaxValueAC(maxValue))
     }
 
     const incStartValue = () => {
-        props.dispatch(IncSetStartValueAC(props.startValue))
+        dispatch(IncSetStartValueAC(startValue))
     }
 
     const decStartValue = () => {
-        props.dispatch(DecSetStartValueAC(props.startValue))
+        dispatch(DecSetStartValueAC(startValue))
     }
 
     return (
@@ -49,7 +49,7 @@ export const InputBlock = (props: InputBlockPropsType) => {
                     </div>
                     <Input decHandler={decMaxValue}
                            incHandler={incMaxValue}
-                           newValue={props.maxValue}/>
+                           newValue={maxValue}/>
                 </div>
                 <div className={local.inputItem}>
                     <div className={local.inputTitle}>
@@ -57,7 +57,7 @@ export const InputBlock = (props: InputBlockPropsType) => {
                     </div>
                     <Input decHandler={decStartValue}
                            incHandler={incStartValue}
-                           newValue={props.startValue}/>
+                           newValue={startValue}/>
                 </div>
             </div>
             <div className={local.btn}>
@@ -68,18 +68,18 @@ export const InputBlock = (props: InputBlockPropsType) => {
     )
 }
 
-const Input = (props: InputType) => {
+const Input: React.FC<InputType> = ({decHandler, incHandler, newValue}) => {
 
     return (
         <div className={local.input}>
             <div className={local.dec}
-                 onClick={props.decHandler}>-</div>
-            <input value={props.newValue}
+                 onClick={decHandler}>-</div>
+            <input value={newValue}
                    type="text"
                    placeholder="Enter your value"
             />
             <div className={local.inc}
-                 onClick={props.incHandler}>+
+                 onClick={incHandler}>+
             </div>
         </div>
     )
